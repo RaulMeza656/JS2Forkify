@@ -1,0 +1,24 @@
+{
+  "name": "forkify",
+  "version": "1.0.0",
+  "description": "forkify",
+  "homepage": "https://github.com/RaulMeza656/JS2Forkify#readme",
+  "bugs": {
+    "url": "https://github.com/RaulMeza656/JS2Forkify/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RaulMeza656/JS2Forkify.git"
+  },
+  "license": "ISC",
+  "author": "Raul Meza",
+  "type": "commonjs",
+  "source": "index.html",
+  "scripts": {
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
+  },
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.16.4"
+  }
+}
