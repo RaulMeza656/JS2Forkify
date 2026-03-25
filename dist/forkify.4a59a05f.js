@@ -177,7 +177,7 @@
 
   // Only insert newRequire.load when it is actually used.
   // The code in this file is linted against ES5, so dynamic import is not allowed.
-  // INSERT_LOAD_HERE
+  function $parcel$resolve(url) {  url = importMap[url] || url;  return import.meta.resolve(distDir + url);}newRequire.resolve = $parcel$resolve;
 
   Object.defineProperty(newRequire, 'root', {
     get: function () {
@@ -207,7 +207,7 @@
       });
     }
   }
-})({"5pfzs":[function(require,module,exports,__globalThis) {
+})({"5DuvQ":[function(require,module,exports,__globalThis) {
 var global = arguments[3];
 var HMR_HOST = null;
 var HMR_PORT = null;
@@ -714,150 +714,65 @@ function hmrAccept(bundle /*: ParcelRequire */ , id /*: string */ ) {
 }
 
 },{}],"7dWZ8":[function(require,module,exports,__globalThis) {
-/*const recipeContainer = document.querySelector('.recipe');
-
-const timeout = function (s) {
-  return new Promise(function (_, reject) {
-    setTimeout(function () {
-      reject(new Error(`Request took too long! Timeout after ${s} second`));
-    }, s * 1000);
-  });
-};
-
-// https://forkify-api.herokuapp.com/v2
-
-///////////////////////////////////////
-
-
-const showRecipe = async function () {
-  try {
-
-    const resp = await fetch(
-      'https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886'
-    );
-
-    const data = await resp.json();
-
-  
-    const { recipe: recipeRaw } = data.data;
-
-   
-    const recipe = {
-      id: recipeRaw.id,
-      title: recipeRaw.title,
-      publisher: recipeRaw.publisher,
-      sourceUrl: recipeRaw.source_url,
-      image: recipeRaw.image_url,
-      servings: recipeRaw.servings,
-      cookTime: recipeRaw.cooking_time,
-      ingredients: recipeRaw.ingredients,
-    };
-
-
-    const markup = `
-      <figure class="recipe__fig">
-        <img src="${recipe.image}" alt="${recipe.title}" class="recipe__img" />
-        <h1 class="recipe__title">
-          <span>${recipe.title}</span>
-        </h1>
-      </figure>
-
-      <div class="recipe__details">
-        <div class="recipe__info">
-          <span class="recipe__info-data recipe__info-data--minutes">
-            ${recipe.cookTime}
-          </span>
-          <span class="recipe__info-text">minutes</span>
-        </div>
-
-        <div class="recipe__info">
-          <span class="recipe__info-data recipe__info-data--people">
-            ${recipe.servings}
-          </span>
-          <span class="recipe__info-text">servings</span>
-        </div>
-
-        <button class="btn--round">
-          Bookmark
-        </button>
-      </div>
-
-      <div class="recipe__ingredients">
-        <h2 class="heading--2">Recipe ingredients</h2>
-        <ul class="recipe__ingredient-list">
-          ${recipe.ingredients
-            .map(
-              ing => `
-                <li class="recipe__ingredient">
-                  <span>${ing.quantity ?? ''}</span>
-                  <span>${ing.unit ?? ''}</span>
-                  <span>${ing.description}</span>
-                </li>
-              `
-            )
-            .join('')}
-        </ul>
-      </div>
-
-      <div class="recipe__directions">
-        <h2 class="heading--2">How to cook it</h2>
-        <p class="recipe__directions-text">
-          This recipe was carefully designed and tested by
-          <span class="recipe__publisher">${recipe.publisher}</span>.
-          Please check out directions at their website.
-        </p>
-
-        <a
-          class="btn--small recipe__btn"
-          href="${recipe.sourceUrl}"
-          target="_blank"
-        >
-          <span>Directions</span>
-        </a>
-      </div>
-    `;
-
-
-    document.querySelector('.recipe').innerHTML = markup;
-
-  
-    console.log(recipe);
-
-  } catch (err) {
-    console.error(err);
-  }
-};
-
-
-showRecipe();*/ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-var _iconsSvg = require("../img/icons.svg");
-var _iconsSvgDefault = parcelHelpers.interopDefault(_iconsSvg);
-const recipeContainer = document.querySelector('.recipe');
-const timeout = function(s) {
-    return new Promise(function(_, reject) {
-        setTimeout(function() {
-            reject(new Error(`Request took too long! Timeout after ${s} second`));
-        }, s * 1000);
-    });
-};
-const renderSpinner = function(parentEl) {
-    const markup = `
-    <div class="spinner">
-      <svg>
-        <use href="${(0, _iconsSvgDefault.default)}#icon-loader"></use>
-      </svg>
-    </div>
-  `;
-    parentEl.innerHTML = '';
-    parentEl.insertAdjacentHTML('afterbegin', markup);
-};
-const showRecipe = async function() {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+var _modelJs = require("./model.js");
+var _recipeViewJs = require("./views/RecipeView.js");
+var _recipeViewJsDefault = parcelHelpers.interopDefault(_recipeViewJs);
+var _searchViewJs = require("./views/searchView.js");
+var _searchViewJsDefault = parcelHelpers.interopDefault(_searchViewJs);
+var _resultsViewJs = require("./views/resultsView.js");
+var _resultsViewJsDefault = parcelHelpers.interopDefault(_resultsViewJs);
+const controlRecipes = async function() {
     try {
-        renderSpinner(recipeContainer);
-        const resp = await fetch('https://forkify-api.herokuapp.com/api/v2/recipes/5ed6604591c37cdc054bc886');
-        const data = await resp.json();
+        const id = window.location.hash.slice(1);
+        if (!id) return;
+        (0, _recipeViewJsDefault.default).renderSpinner();
+        await _modelJs.loadRecipe(id);
+        (0, _recipeViewJsDefault.default).render(_modelJs.state.recipe);
+    } catch (err) {
+        (0, _recipeViewJsDefault.default).renderError();
+    }
+};
+const controlSearchResults = async function() {
+    try {
+        const query = (0, _searchViewJsDefault.default).getQuery();
+        if (!query) return;
+        (0, _resultsViewJsDefault.default).renderSpinner();
+        await _modelJs.loadSearchResults(query);
+        (0, _resultsViewJsDefault.default).render(_modelJs.state.search.results);
+    } catch (err) {
+        console.log(err);
+    }
+};
+const init = function() {
+    (0, _searchViewJsDefault.default).addHandlerSearch(controlSearchResults);
+    window.addEventListener('hashchange', controlRecipes);
+    window.addEventListener('load', controlRecipes);
+};
+init();
+
+},{"./model.js":"3QBkH","./views/RecipeView.js":"dfIpa","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./views/searchView.js":"kbE4Z","./views/resultsView.js":"kBQ4r"}],"3QBkH":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "state", ()=>state);
+parcelHelpers.export(exports, "loadRecipe", ()=>loadRecipe);
+parcelHelpers.export(exports, "loadSearchResults", ()=>loadSearchResults);
+var _configJs = require("./config.js");
+var _helpersJs = require("./helpers.js");
+const state = {
+    recipe: {},
+    search: {
+        query: '',
+        results: []
+    }
+};
+const loadRecipe = async function(id) {
+    try {
+        const res = await fetch(`${(0, _configJs.API_URL)}${id}`);
+        const data = await res.json();
+        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
         const { recipe } = data.data;
-        const recipeFormatted = {
+        state.recipe = {
             id: recipe.id,
             title: recipe.title,
             publisher: recipe.publisher,
@@ -867,65 +782,37 @@ const showRecipe = async function() {
             cookTime: recipe.cooking_time,
             ingredients: recipe.ingredients
         };
-        const markup = `
-      <figure class="recipe__fig">
-        <img src="${recipeFormatted.image}" alt="${recipeFormatted.title}" class="recipe__img" />
-        <h1 class="recipe__title">
-          <span>${recipeFormatted.title}</span>
-        </h1>
-      </figure>
-
-      <div class="recipe__details">
-        <div class="recipe__info">
-          <svg class="recipe__info-icon">
-            <use href="${(0, _iconsSvgDefault.default)}#icon-clock"></use>
-          </svg>
-          <span>${recipeFormatted.cookTime}</span>
-          <span>minutes</span>
-        </div>
-
-        <div class="recipe__info">
-          <svg class="recipe__info-icon">
-            <use href="${(0, _iconsSvgDefault.default)}#icon-users"></use>
-          </svg>
-          <span>${recipeFormatted.servings}</span>
-          <span>servings</span>
-        </div>
-      </div>
-
-      <div class="recipe__ingredients">
-        <ul class="recipe__ingredient-list">
-          ${recipeFormatted.ingredients.map((ing)=>`
-                <li class="recipe__ingredient">
-                  <svg class="recipe__icon">
-                    <use href="${0, _iconsSvgDefault.default}#icon-check"></use>
-                  </svg>
-                  <span>${ing.quantity ?? ''}</span>
-                  <span>${ing.unit ?? ''}</span>
-                  <span>${ing.description}</span>
-                </li>
-              `).join('')}
-        </ul>
-      </div>
-
-      <div class="recipe__directions">
-        <p>
-          By ${recipeFormatted.publisher}
-        </p>
-        <a href="${recipeFormatted.sourceUrl}" target="_blank">
-          Directions
-        </a>
-      </div>
-    `;
-        recipeContainer.innerHTML = '';
-        recipeContainer.insertAdjacentHTML('afterbegin', markup);
     } catch (err) {
-        console.error(err);
+        throw err;
     }
 };
-showRecipe();
+const loadSearchResults = async function(query) {
+    try {
+        state.search.query = query;
+        const data = await (0, _helpersJs.getJSON)(`${(0, _configJs.API_URL)}?search=${query}`);
+        state.search.results = data.data.recipes.map((rec)=>{
+            return {
+                id: rec.id,
+                title: rec.title,
+                publisher: rec.publisher,
+                image: rec.image_url
+            };
+        });
+    } catch (err) {
+        console.log(`${err} \u{1F4A5}\u{1F4A5}\u{1F4A5}\u{1F4A5}`);
+        throw err;
+    }
+};
 
-},{"../img/icons.svg":"d6UCS","@parcel/transformer-js/src/esmodule-helpers.js":"eRCzh"}],"d6UCS":[function() {},{}],"eRCzh":[function(require,module,exports,__globalThis) {
+},{"./config.js":"2hPh4","./helpers.js":"7nL9P","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"2hPh4":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "API_URL", ()=>API_URL);
+parcelHelpers.export(exports, "TIMEOUT_SEC", ()=>TIMEOUT_SEC);
+const API_URL = 'https://forkify-api.herokuapp.com/api/v2/recipes/';
+const TIMEOUT_SEC = 5;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"jnFvT":[function(require,module,exports,__globalThis) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -955,6 +842,183 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}]},["5pfzs","7dWZ8"], "7dWZ8", "parcelRequire3a11", {})
+},{}],"7nL9P":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "getJSON", ()=>getJSON);
+var _configJs = require("./config.js");
+const timeout = function(s) {
+    return new Promise(function(_, reject) {
+        setTimeout(function() {
+            reject(new Error(`Request took too long! Timeout after ${s} second`));
+        }, s * 1000);
+    });
+};
+const getJSON = async function(url) {
+    try {
+        const fetchPro = fetch(url);
+        const res = await Promise.race([
+            fetchPro,
+            timeout((0, _configJs.TIMEOUT_SEC))
+        ]);
+        const data = await res.json();
+        if (!res.ok) throw new Error(`${data.message} (${res.status})`);
+        return data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+},{"./config.js":"2hPh4","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"dfIpa":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _viewJs = require("./View.js");
+var _viewJsDefault = parcelHelpers.interopDefault(_viewJs);
+class RecipeView extends (0, _viewJsDefault.default) {
+    _parentElement = document.querySelector('.recipe');
+    _errorMessage = 'We could not find that recipe. Please try another one!';
+    _message = 'Recipe loaded successfully!';
+    _generateMarkup() {
+        return `
+      <figure class="recipe__fig">
+        <img src="${this._data.image}" alt="${this._data.title}" class="recipe__img" />
+        <h1 class="recipe__title">
+          <span>${this._data.title}</span>
+        </h1>
+      </figure>
+
+      <div class="recipe__details">
+        <div class="recipe__info">
+          <span class="recipe__info-data recipe__info-data--minutes">${this._data.cookTime}</span>
+          <span class="recipe__info-text">minutes</span>
+        </div>
+        <div class="recipe__info">
+          <span class="recipe__info-data recipe__info-data--people">${this._data.servings}</span>
+          <span class="recipe__info-text">servings</span>
+        </div>
+      </div>
+
+      <div class="recipe__publisher">
+        <span>Publisher: ${this._data.publisher}</span>
+      </div>
+    `;
+    }
+}
+exports.default = new RecipeView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT","./View.js":"jSw21"}],"jSw21":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const icons = new URL(require("fcd5427331ff87b4")).href;
+class View {
+    _data;
+    render(data) {
+        if (!data || Array.isArray(data) && data.length === 0) return this.renderError();
+        this._data = data;
+        const markup = this._generateMarkup();
+        this._clear();
+        this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
+    _clear() {
+        this._parentElement.innerHTML = '';
+    }
+    renderSpinner() {
+        const markup = `
+      <div class="spinner">
+        <svg>
+          <use href="${icons}#icon-loader"></use>
+        </svg>
+      </div>
+    `;
+        this._clear();
+        this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
+    renderError(message = this._errorMessage) {
+        const markup = `
+      <div class="error">
+        <div>
+          <svg>
+            <use href="${icons}#icon-alert-triangle"></use>
+          </svg>
+        </div>
+        <p>${message}</p>
+      </div>
+    `;
+        this._clear();
+        this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
+    renderMessage(message = this._message) {
+        const markup = `
+      <div class="message">
+        <div>
+          <svg>
+            <use href="${icons}#icon-smile"></use>
+          </svg>
+        </div>
+        <p>${message}</p>
+      </div>
+    `;
+        this._clear();
+        this._parentElement.insertAdjacentHTML('afterbegin', markup);
+    }
+}
+exports.default = View;
+
+},{"fcd5427331ff87b4":"aob6l","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"aob6l":[function(require,module,exports,__globalThis) {
+module.exports = module.bundle.resolve("icons.7bd9dd61.svg") + "?" + Date.now();
+
+},{}],"kbE4Z":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+class SearchView {
+    _parentEl = document.querySelector('.search');
+    getQuery() {
+        const query = this._parentEl.querySelector('.search__field').value;
+        this._clearInput();
+        return query;
+    }
+    _clearInput() {
+        this._parentEl.querySelector('.search__field').value = '';
+    }
+    addHandlerSearch(handler) {
+        this._parentEl.addEventListener('submit', function(e) {
+            e.preventDefault();
+            handler();
+        });
+    }
+}
+exports.default = new SearchView();
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}],"kBQ4r":[function(require,module,exports,__globalThis) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _viewJs = require("./View.js");
+var _viewJsDefault = parcelHelpers.interopDefault(_viewJs);
+class ResultsView extends (0, _viewJsDefault.default) {
+    _parentElement = document.querySelector('.results');
+    _errorMessage = 'No recipes found for your query';
+    _message = '';
+    _generateMarkup() {
+        return this._data.map(this._generateMarkupPreview).join('');
+    }
+    _generateMarkupPreview(result) {
+        return `
+      <li class="preview">
+        <a class="preview__link" href="#${result.id}">
+          <figure class="preview__fig">
+            <img src="${result.image}" alt="${result.title}" />
+          </figure>
+          <div class="preview__data">
+            <h4 class="preview__title">${result.title}</h4>
+            <p class="preview__publisher">${result.publisher}</p>
+          </div>
+        </a>
+      </li>
+    `;
+    }
+}
+exports.default = new ResultsView();
+
+},{"./View.js":"jSw21","@parcel/transformer-js/src/esmodule-helpers.js":"jnFvT"}]},["5DuvQ","7dWZ8"], "7dWZ8", "parcelRequire3a11", {}, "./", "/")
 
 //# sourceMappingURL=forkify.4a59a05f.js.map
