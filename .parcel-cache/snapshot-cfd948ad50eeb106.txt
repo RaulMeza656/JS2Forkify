@@ -17,7 +17,7 @@
 135C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\@msgpackr-extract134181912267283542 1
 156C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\@swc\helpers\cjs\_set_prototype_of.cjs134183746221977203 0
 159C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\electron-to-chromium\chromium-versions.js134181911604166993 0
-109C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist134188846571797195 1
+109C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist134192157437657930 1
 148C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\semver\functions\prerelease.js134181911611778173 0
 149C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\caniuse-lite\data\regions\GF.js134181911628102636 0
 165C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\caniuse-lite\data\features\css-cascade-scope.js134181911619284874 0
@@ -156,7 +156,7 @@
 165C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\@swc\helpers\src\_skip_first_generator_next.mjs134183746230295632 0
 128C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\color-name134181912257769663 1
 134C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\lmdb\src\dbi.cpp134181911616839260 0
-131C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\src\js\views\RecipeView.js134188846569072251 0
+131C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\src\js\views\RecipeView.js134192156778128395 0
 160C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\@parcel\transformer-react-refresh-wrap\src134183746713313798 1
 136C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\chrome-trace-event134181912257116882 1
 139C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\node_modules\utility-types\LICENSE134181911602997074 0
@@ -3687,8 +3687,8 @@
 133C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist\forkify.0b195b44.js.map134182001820177072 0
 130C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist\forkify.1ab9dd2f.css134181914466892998 0
 133C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist\forkify.2661251e.js.map134181905829576548 0
-129C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist\forkify.4a59a05f.js134188846571483210 0
-133C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist\forkify.4a59a05f.js.map134188846571598414 0
+129C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist\forkify.4a59a05f.js134192157437356695 0
+133C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist\forkify.4a59a05f.js.map134192157437582530 0
 133C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist\forkify.9a01b504.js.map134181905829375832 0
 128C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist\icons.6fa84e4c.svg134181914467084053 0
 127C:\Users\raulmeza\OneDrive - Tekno, Inc\Documents\Curso Tecmilenio\B3_JavaScript2\Proyecto Final\forkify\dist\logo.726d37a8.png134188846571623602 0
